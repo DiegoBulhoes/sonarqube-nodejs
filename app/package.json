@@ -1,0 +1,57 @@
+{
+  "name": "sonarqube-nodejs",
+  "version": "1.0.0",
+  "description": "These are just examples for demonstration, nothing prescriptive",
+  "main": "serve.js",
+  "scripts": {
+    "dev": "nodemon -w . --exec babel-node serve.js",
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "eslint '**/*.js' --fix",
+    "test:integration": "mocha --opts test/mocha.opts test/integration/**/*.spec.js",
+    "cover": "nyc --reporter=lcov --reporter=text mocha --opts test/mocha.opts test/integration/**/*.spec.js"
+  },
+  "author": "DiegoBulhoes",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-istanbul": "^5.0.1",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4",
+    "nyc": "^13.0.1",
+    "supertest": "^3.3.0"
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-babel",
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 90,
+    "statements": 90,
+    "functions": 90,
+    "branches": 90,
+    "include": [
+      "**/*.js"
+    ],
+    "exclude": [
+      "test/**/*.spec.js",
+      "node_modules",
+      "coverage",
+      ".nyc_output"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
+  }
+}
