@@ -1,0 +1,32 @@
+version: "3.3"
+
+services:
+
+  db_postgres:
+    image: postgres:10
+    restart: always
+    networks:
+      - sonarNet
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+    volumes:
+      - postgresqlData:/var/lib/postgresql/data
+      
+  sonarqube:
+    image: sonarqube
+    restart: always
+    ports:
+      - "9000:9000"
+    networks:
+      - sonarNet
+    environment:
+      - SONARQUBE_JDBC_PASSWORD=sonar
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://db_postgres:5432/sonar
+
+networks:
+  sonarNet:
+    driver: bridge
+
+volumes:
+  postgresqlData:
