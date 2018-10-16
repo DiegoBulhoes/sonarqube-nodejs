@@ -8,7 +8,7 @@
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint '**/*.js' --fix",
     "test:integration": "mocha --opts test/mocha.opts test/integration/**/*.spec.js",
-    "cover": "nyc --reporter=lcov --reporter=text mocha --opts test/mocha.opts test/integration/**/*.spec.js"
+    "cover": "nyc mocha --opts test/mocha.opts test/integration/**/*.spec.js"
   },
   "author": "DiegoBulhoes",
   "license": "Apache-2.0",
@@ -50,8 +50,7 @@
       ".nyc_output"
     ],
     "reporter": [
-      "lcov",
-      "text-summary"
+      "lcov"
     ]
   }
 }
