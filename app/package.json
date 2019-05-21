@@ -4,6 +4,8 @@
   "description": "These are just examples for demonstration, nothing prescriptive",
   "main": "serve.js",
   "scripts": {
+    "build": "babel src --out-dir dist",
+    "start": "node dist/server.js",
     "dev": "nodemon -w . --exec babel-node serve.js",
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint '**/*.js' --fix",
@@ -13,16 +15,16 @@
   "author": "DiegoBulhoes",
   "license": "Apache-2.0",
   "dependencies": {
-    "@babel/runtime": "^7.1.2",
     "body-parser": "^1.18.3",
+    "cross-env": "^5.2.0",
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-plugin-istanbul": "^5.1.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "babel-plugin-istanbul": "^5.1.4",
     "chai": "^4.2.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -30,8 +32,8 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.7",
-    "nyc": "^13.1.0",
+    "nodemon": "^1.19.0",
+    "nyc": "^14.1.1",
     "supertest": "^3.3.0"
   },
   "nyc": {
@@ -52,7 +54,8 @@
       ".nyc_output"
     ],
     "reporter": [
-      "lcov"
+      "lcov",
+      "html"
     ]
   }
 }
